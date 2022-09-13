@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.KinMapper">
+
+	<!-- ユーザー登録 -->
+	<insert id="newUserInfo" parameterType="String">
+		insert into
+		kin_0903(id,name,age)values(#{id},#{name},#{age});
+	</insert>
+
+	<!-- ユーザー情報取得 -->
+	<select id="getUserInfo"
+		resultType="com.example.demo.bean.UserInfoBean">
+		select * from kin_0903;
+	</select>
+
+	<!-- ユーザー情報編集 -->
+	<select id="findById"
+		resultType="com.example.demo.bean.UserInfoBean">
+		select * from kin_0903 where id = #{id} ;
+	</select>
+
+	<!-- 更新 -->
+	<update id="update">
+		update kin_0903 set id = #{id}, name = #{name}, age = #{age};
+	</update>
+
+</mapper>
