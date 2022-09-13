@@ -10,3 +10,5 @@ select * from kin_0903;
 drop table kin_0903;
 
 insert into kin_0903(id,name,age)values('02','b','15');
+
+--https://medium-company.com/mybatis-spring/#edithtml
