@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.bean.UserInfoBean;
+import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.mapper.KinMapper;
 
 @Service
@@ -34,16 +35,15 @@ public class KinService {
      * @return 検索結果
      */
     public UserInfoBean findById(String id) {
-		return (UserInfoBean) kinMapper.findById(id);
+		return  kinMapper.findById(id);
     }
     
     /**
      * ユーザ情報更新
      * @param userEditRequest リクエストデータ
      */
-    public void update(UserInfoBean userInfoBean) {
-    	kinMapper.update(userInfoBean);
-    
+    public void update(UserUpdateRequest userUpdateRequest) {
+    	kinMapper.userUpdate(userUpdateRequest);
     }
 
 }

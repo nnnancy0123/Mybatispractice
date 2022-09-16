@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<div class="container">
+	<h1>ユーザー情報一覧</h1>
+	<div class="float-end">
+		<a th:href="@{/kin}" class="btn btn-primary">新規登録はこちら</a>
+	</div>
+</head>
+<body>
+	こんいちは！
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">NAME</th>
+				<th scope="col">Age</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="userInfo : ${getinfo}">
+				<td th:text="${userInfo.id}"></td>
+				<td th:text="${userInfo.name}"></td>
+				<td th:text="${userInfo.age}"></td>
+				<td>
+				<button><a th:href="@{/userInfo/{id}(id=*{userInfo.id})}"  class="btn btn-primary">編集</a></button>
+				<button>削除</button>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

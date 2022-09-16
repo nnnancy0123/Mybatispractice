@@ -11,11 +11,11 @@
 		document.getElementById("myH1").innerHTML = "Welcome to the page";
 	</script>
 	
-	<form action="/kinProcess" method="post">
+	<form th:action="@{/userProcess}" method="post">
 		id:<input type="text" name="id"><br> name: <input
 			type="text" name="name"> <br>age:<input type="text"
-			name="age"> <a href="/kinInfo.html">
-			<button type="submit">proof</button>
+			name="age"> <a href="/userInfo.html">
+			<button type="submit">新規登録</button>
 		</a>
 
 	</form>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.bean.UserInfoBean;
+import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.service.KinService;
 
 @Controller
@@ -19,12 +20,6 @@ public class KinController {
 
 	@Autowired
 	KinService kinService;
-
-	//	@RequestMapping(value = "kin")
-	//	public String homePage(Model model, HttpServletRequest request) {
-	//
-	//		return "kin";
-	//}
 
 	/*
 	 * 
@@ -39,48 +34,50 @@ public class KinController {
 		return mav;
 	}
 
-	@PostMapping("/kinProcess")
-	public ModelAndView CreatInfo(@RequestParam String id, @RequestParam String name, @RequestParam String age,  Model model) {
+	/**
+	 * ユーザー新規登録画面を表示
+	 * @param model Model
+	 * @return ユーザー情報一覧画面
+	 */
+	@PostMapping("/userProcess")
+	public ModelAndView CreatInfo(@RequestParam String id, @RequestParam String name, @RequestParam String age,
+			Model model) {
 
 		UserInfoBean userInfoBean = new UserInfoBean();
 		userInfoBean.setId(id);
 		userInfoBean.setName(name);
 		userInfoBean.setAge(age);
-		
+
 		kinService.newUserS(userInfoBean);
-		
-		List<UserInfoBean> userInfo = kinService.getUserInfo() ;
+
+		List<UserInfoBean> userInfo = kinService.getUserInfo();
 		model.addAttribute("getinfo", userInfo);
 
-		ModelAndView kin = new ModelAndView("kinInfo");
-		
+		ModelAndView kin = new ModelAndView("userInfo");
+
 		System.out.println("144");
 		return kin;
-		
 	}
-	
-	
-    /**
-     * ユーザー編集画面を表示
-     * @param id ユーザーID
-     * @param model Model
-     * @return ユーザー編集画面
-     */
-    @GetMapping("/kinInfoProcess")
-    public String displayEdit(@PathVariable String id, Model model) {
-    	KinService kinService= new KinService();
-    	UserInfoBean user= kinService.findById(id);
-    	user.setId(user.getId());
-    	user.setId(user.getName());
-    	user.setId(user.getAge());
-    	
-    	model.addAttribute("user", user);
-    	
-    	ModelAndView kinInfo = new ModelAndView("idInfo");
-    	System.out.println("5566");
-		
-        return "kinInfo";
-    }
-	
+
+	/**
+	 * ユーザー詳細画面を表示
+	 * @param id ユーザーID
+	 * @param model Model
+	 * @return ユーザー情報詳細画面
+	 */
+	@GetMapping("/userInfo/{id}")
+	public String displayEdit(@PathVariable String id, Model model) {
+
+		UserInfoBean user = kinService.findById(id);
+		UserUpdateRequest userUpdateRequest = new UserUpdateRequest();
+		userUpdateRequest.setId(user.getId());
+		userUpdateRequest.setName(user.getName());
+		userUpdateRequest.setAge(user.getAge());
+		model.addAttribute("userUpdateRequest", userUpdateRequest);
+		//ModelAndView kinInfo = new ModelAndView("idInfo");
+		System.out.println("5566");
+		return "/userInfoEdit";
+
+	}
 
 }
