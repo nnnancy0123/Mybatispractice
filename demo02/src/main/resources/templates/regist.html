@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kin'Shop</title>
+</head>
+<body>
+
+	<h1 id="myH1"></h1>
+	<script >
+		document.getElementById("myH1").innerHTML = "Welcome to the page";
+	</script>
+	
+	<form th:action="@{/userInfoList}" method="post">
+		id:<input type="text" name="id"><br> name: <input
+			type="text" name="name"> <br>age:<input type="text"
+			name="age"> 
+			<button type="submit">新規登録</button>
+
+	</form>
+
+
+
+</body>
+</html>

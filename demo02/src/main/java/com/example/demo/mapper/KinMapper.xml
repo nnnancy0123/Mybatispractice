@@ -7,27 +7,26 @@
 	<!-- ユーザー登録 -->
 	<insert id="newUserInfo" parameterType="String">
 		insert into
-		kin_0903(id,name,age)values(#{id},#{name},#{age});
+		kin_userinfo(id,name,age)values(#{id},#{name},#{age});
 	</insert>
 
-	<!-- ユーザー情報取得 -->
+	<!-- ユーザー情報一覧取得 -->
 	<select id="getUserInfo"
 		resultType="com.example.demo.bean.UserInfoBean">
-		select * from kin_0903;
+		select * from kin_userinfo;
 	</select>
 
 
-	<!-- ユーザー情報編集 -->
+	<!-- ユーザーID情報取得 -->
 	<select id="findById"
 		resultType="com.example.demo.bean.UserInfoBean">
-		select * from kin_0903 where id = #{id} ;
+		select * from kin_userinfo where id = #{id} ;
 	</select>
 
 
-	<!-- 更新 -->
+	<!-- ユーザー情報更新 -->
 	<update id="update" >
-		update kin_0903 set id = #{id}, name = #{name}, age =
-		#{age} where id =#{id}
+		update kin_userinfo set  name = #{name}, age =#{age} where id =#{id}
 	</update>
 
 </mapper>

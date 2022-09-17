@@ -15,11 +15,9 @@ public class KinService {
 	@Autowired
 	KinMapper kinMapper;
 
-	public void newUserS(UserInfoBean userInfoBean) {
+	public void createUser(UserInfoBean userInfoBean) {
 
 		kinMapper.newUserInfo(userInfoBean);
-
-		System.out.println("1231");
 
 	}
 

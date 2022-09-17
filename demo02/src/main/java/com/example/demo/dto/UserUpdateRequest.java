@@ -20,5 +20,5 @@ public class UserUpdateRequest extends UserAddRequest implements Serializable{
      */
     @NotNull
     private String id;
-    private String age;
+    
 }

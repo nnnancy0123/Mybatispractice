@@ -13,6 +13,11 @@ public interface KinMapper {
 
 	public void newUserInfo(UserInfoBean userInfoBean);
 
+	/**
+	 * ユーザー情報一覧
+	 * 
+	 * @return 情報一覧
+	 */
 	public List<UserInfoBean> getUserInfo();
 
 	/**
